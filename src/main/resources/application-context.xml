@@ -11,19 +11,19 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
         
-    <bean name="twitterIngest" class="au.com.afl.ingest.twitter.TwitterIngest">
+    <bean name="twitterIngest" class="au.com.twitter.ingest.TwitterIngest">
         <constructor-arg ref="endpointConfiguration" />
         <constructor-arg ref="oAuthConfiguration" />
     </bean>  
     
-    <bean name="oAuthConfiguration" class="au.com.afl.ingest.twitter.configuration.OAuthConfiguration">
+    <bean name="oAuthConfiguration" class="au.com.twitter.ingest.configuration.OAuthConfiguration">
         <constructor-arg value="${security.oauth.consumer.key}" />
         <constructor-arg value="${security.oauth.consumer.secret}" />
         <constructor-arg value="${security.oauth.token}" />
         <constructor-arg value="${security.oauth.secret}" />
     </bean>        
     
-    <bean name="endpointConfiguration" class="au.com.afl.ingest.twitter.configuration.EndpointConfiguration">
+    <bean name="endpointConfiguration" class="au.com.twitter.ingest.configuration.EndpointConfiguration">
         <constructor-arg value="${endpoint.config.msg.queue.size}" />
         <constructor-arg value="${endpoint.config.event.queue.size}" />
     </bean>

@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import au.com.afl.test.AbstractBaseContextTest;
+import au.com.twitter.ingest.TwitterIngest;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
