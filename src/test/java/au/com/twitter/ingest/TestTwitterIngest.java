@@ -1,4 +1,4 @@
-package au.com.afl.ingest.twitter;
+package au.com.twitter.ingest;
 
 import org.junit.Assert;
 import org.junit.Before;
