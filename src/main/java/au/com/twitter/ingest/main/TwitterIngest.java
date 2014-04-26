@@ -1,4 +1,4 @@
-package au.com.twitter.ingest;
+package au.com.twitter.ingest.main;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

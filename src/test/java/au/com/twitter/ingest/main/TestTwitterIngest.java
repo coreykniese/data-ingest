@@ -1,4 +1,4 @@
-package au.com.twitter.ingest;
+package au.com.twitter.ingest.main;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import au.com.afl.test.AbstractBaseContextTest;
-import au.com.twitter.ingest.TwitterIngest;
+import au.com.twitter.ingest.main.TwitterIngest;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
