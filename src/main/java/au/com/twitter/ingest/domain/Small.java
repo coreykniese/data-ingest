@@ -20,24 +20,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Small {
 
     @JsonProperty("h")
-    private Integer h;
+    private Long h;
     @JsonProperty("resize")
     private String resize;
     @JsonProperty("w")
-    private Integer w;
+    private Long w;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("h")
-    public Integer getH() {
+    public Long getH() {
         return h;
     }
 
     @JsonProperty("h")
-    public void setH(Integer h) {
+    public void setH(Long h) {
         this.h = h;
     }
 
-    public Small withH(Integer h) {
+    public Small withH(Long h) {
         this.h = h;
         return this;
     }
@@ -58,16 +58,16 @@ public class Small {
     }
 
     @JsonProperty("w")
-    public Integer getW() {
+    public Long getW() {
         return w;
     }
 
     @JsonProperty("w")
-    public void setW(Integer w) {
+    public void setW(Long w) {
         this.w = w;
     }
 
-    public Small withW(Integer w) {
+    public Small withW(Long w) {
         this.w = w;
         return this;
     }

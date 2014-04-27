@@ -36,19 +36,19 @@ public class User {
     @JsonProperty("description")
     private String description;
     @JsonProperty("favourites_count")
-    private Integer favourites_count;
+    private Long favourites_count;
     @JsonProperty("follow_request_sent")
     private Object follow_request_sent;
     @JsonProperty("followers_count")
-    private Integer followers_count;
+    private Long followers_count;
     @JsonProperty("following")
     private Object following;
     @JsonProperty("friends_count")
-    private Integer friends_count;
+    private Long friends_count;
     @JsonProperty("geo_enabled")
     private Boolean geo_enabled;
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String id_str;
     @JsonProperty("is_translation_enabled")
@@ -58,7 +58,7 @@ public class User {
     @JsonProperty("lang")
     private String lang;
     @JsonProperty("listed_count")
-    private Integer listed_count;
+    private Long listed_count;
     @JsonProperty("location")
     private String location;
     @JsonProperty("name")
@@ -94,13 +94,13 @@ public class User {
     @JsonProperty("screen_name")
     private String screen_name;
     @JsonProperty("statuses_count")
-    private Integer statuses_count;
+    private Long statuses_count;
     @JsonProperty("time_zone")
     private String time_zone;
     @JsonProperty("url")
     private Object url;
     @JsonProperty("utc_offset")
-    private Integer utc_offset;
+    private Long utc_offset;
     @JsonProperty("verified")
     private Boolean verified;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -181,16 +181,16 @@ public class User {
     }
 
     @JsonProperty("favourites_count")
-    public Integer getFavourites_count() {
+    public Long getFavourites_count() {
         return favourites_count;
     }
 
     @JsonProperty("favourites_count")
-    public void setFavourites_count(Integer favourites_count) {
+    public void setFavourites_count(Long favourites_count) {
         this.favourites_count = favourites_count;
     }
 
-    public User withFavourites_count(Integer favourites_count) {
+    public User withFavourites_count(Long favourites_count) {
         this.favourites_count = favourites_count;
         return this;
     }
@@ -211,16 +211,16 @@ public class User {
     }
 
     @JsonProperty("followers_count")
-    public Integer getFollowers_count() {
+    public Long getFollowers_count() {
         return followers_count;
     }
 
     @JsonProperty("followers_count")
-    public void setFollowers_count(Integer followers_count) {
+    public void setFollowers_count(Long followers_count) {
         this.followers_count = followers_count;
     }
 
-    public User withFollowers_count(Integer followers_count) {
+    public User withFollowers_count(Long followers_count) {
         this.followers_count = followers_count;
         return this;
     }
@@ -241,16 +241,16 @@ public class User {
     }
 
     @JsonProperty("friends_count")
-    public Integer getFriends_count() {
+    public Long getFriends_count() {
         return friends_count;
     }
 
     @JsonProperty("friends_count")
-    public void setFriends_count(Integer friends_count) {
+    public void setFriends_count(Long friends_count) {
         this.friends_count = friends_count;
     }
 
-    public User withFriends_count(Integer friends_count) {
+    public User withFriends_count(Long friends_count) {
         this.friends_count = friends_count;
         return this;
     }
@@ -271,16 +271,16 @@ public class User {
     }
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public User withId(Integer id) {
+    public User withId(Long id) {
         this.id = id;
         return this;
     }
@@ -346,16 +346,16 @@ public class User {
     }
 
     @JsonProperty("listed_count")
-    public Integer getListed_count() {
+    public Long getListed_count() {
         return listed_count;
     }
 
     @JsonProperty("listed_count")
-    public void setListed_count(Integer listed_count) {
+    public void setListed_count(Long listed_count) {
         this.listed_count = listed_count;
     }
 
-    public User withListed_count(Integer listed_count) {
+    public User withListed_count(Long listed_count) {
         this.listed_count = listed_count;
         return this;
     }
@@ -616,16 +616,16 @@ public class User {
     }
 
     @JsonProperty("statuses_count")
-    public Integer getStatuses_count() {
+    public Long getStatuses_count() {
         return statuses_count;
     }
 
     @JsonProperty("statuses_count")
-    public void setStatuses_count(Integer statuses_count) {
+    public void setStatuses_count(Long statuses_count) {
         this.statuses_count = statuses_count;
     }
 
-    public User withStatuses_count(Integer statuses_count) {
+    public User withStatuses_count(Long statuses_count) {
         this.statuses_count = statuses_count;
         return this;
     }
@@ -661,16 +661,16 @@ public class User {
     }
 
     @JsonProperty("utc_offset")
-    public Integer getUtc_offset() {
+    public Long getUtc_offset() {
         return utc_offset;
     }
 
     @JsonProperty("utc_offset")
-    public void setUtc_offset(Integer utc_offset) {
+    public void setUtc_offset(Long utc_offset) {
         this.utc_offset = utc_offset;
     }
 
-    public User withUtc_offset(Integer utc_offset) {
+    public User withUtc_offset(Long utc_offset) {
         this.utc_offset = utc_offset;
         return this;
     }

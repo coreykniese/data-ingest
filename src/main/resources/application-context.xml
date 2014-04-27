@@ -14,6 +14,7 @@
     <bean name="twitterIngest" class="au.com.twitter.ingest.main.TwitterIngest">
         <constructor-arg ref="endpointConfiguration" />
         <constructor-arg ref="oAuthConfiguration" />
+        <constructor-arg ref="ingestProcessor" />
     </bean>  
     
     <bean name="oAuthConfiguration" class="au.com.twitter.ingest.configuration.OAuthConfiguration">
@@ -27,6 +28,9 @@
         <constructor-arg value="${endpoint.config.msg.queue.size}" />
         <constructor-arg value="${endpoint.config.event.queue.size}" />
     </bean>
+
+    <bean name="ingestProcessor" class="au.com.twitter.ingest.processor.IngestProcessor"></bean>        
+        
         
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">

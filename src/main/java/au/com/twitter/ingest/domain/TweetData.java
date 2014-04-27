@@ -31,7 +31,7 @@ public class TweetData {
     @JsonProperty("entities")
     private Entities entities;
     @JsonProperty("favorite_count")
-    private Integer favorite_count;
+    private Long favorite_count;
     @JsonProperty("favorited")
     private Boolean favorited;
     @JsonProperty("filter_level")
@@ -59,7 +59,7 @@ public class TweetData {
     @JsonProperty("possibly_sensitive")
     private Boolean possibly_sensitive;
     @JsonProperty("retweet_count")
-    private Integer retweet_count;
+    private Long retweet_count;
     @JsonProperty("retweeted")
     private Boolean retweeted;
     @JsonProperty("retweeted_status")
@@ -135,16 +135,16 @@ public class TweetData {
     }
 
     @JsonProperty("favorite_count")
-    public Integer getFavorite_count() {
+    public Long getFavorite_count() {
         return favorite_count;
     }
 
     @JsonProperty("favorite_count")
-    public void setFavorite_count(Integer favorite_count) {
+    public void setFavorite_count(Long favorite_count) {
         this.favorite_count = favorite_count;
     }
 
-    public TweetData withFavorite_count(Integer favorite_count) {
+    public TweetData withFavorite_count(Long favorite_count) {
         this.favorite_count = favorite_count;
         return this;
     }
@@ -345,16 +345,16 @@ public class TweetData {
     }
 
     @JsonProperty("retweet_count")
-    public Integer getRetweet_count() {
+    public Long getRetweet_count() {
         return retweet_count;
     }
 
     @JsonProperty("retweet_count")
-    public void setRetweet_count(Integer retweet_count) {
+    public void setRetweet_count(Long retweet_count) {
         this.retweet_count = retweet_count;
     }
 
-    public TweetData withRetweet_count(Integer retweet_count) {
+    public TweetData withRetweet_count(Long retweet_count) {
         this.retweet_count = retweet_count;
         return this;
     }

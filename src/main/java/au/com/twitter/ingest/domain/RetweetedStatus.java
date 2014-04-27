@@ -1,4 +1,3 @@
-
 package au.com.twitter.ingest.domain;
 
 import java.util.HashMap;
@@ -17,31 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder({
-    "contributors",
-    "coordinates",
-    "created_at",
-    "entities",
-    "favorite_count",
-    "favorited",
-    "geo",
-    "id",
-    "id_str",
-    "in_reply_to_screen_name",
-    "in_reply_to_status_id",
-    "in_reply_to_status_id_str",
-    "in_reply_to_user_id",
-    "in_reply_to_user_id_str",
-    "lang",
-    "place",
-    "possibly_sensitive",
-    "retweet_count",
-    "retweeted",
-    "source",
-    "text",
-    "truncated",
-    "user"
-})
+@JsonPropertyOrder({ "contributors", "coordinates", "created_at", "entities", "favorite_count", "favorited", "geo", "id", "id_str",
+        "in_reply_to_screen_name", "in_reply_to_status_id", "in_reply_to_status_id_str", "in_reply_to_user_id", "in_reply_to_user_id_str",
+        "lang", "place", "possibly_sensitive", "retweet_count", "retweeted", "source", "text", "truncated", "user" })
 public class RetweetedStatus {
 
     @JsonProperty("contributors")
@@ -53,7 +30,7 @@ public class RetweetedStatus {
     @JsonProperty("entities")
     private Entities entities;
     @JsonProperty("favorite_count")
-    private Integer favorite_count;
+    private Long favorite_count;
     @JsonProperty("favorited")
     private Boolean favorited;
     @JsonProperty("geo")
@@ -79,7 +56,7 @@ public class RetweetedStatus {
     @JsonProperty("possibly_sensitive")
     private Boolean possibly_sensitive;
     @JsonProperty("retweet_count")
-    private Integer retweet_count;
+    private Long retweet_count;
     @JsonProperty("retweeted")
     private Boolean retweeted;
     @JsonProperty("source")
@@ -153,16 +130,16 @@ public class RetweetedStatus {
     }
 
     @JsonProperty("favorite_count")
-    public Integer getFavorite_count() {
+    public Long getFavorite_count() {
         return favorite_count;
     }
 
     @JsonProperty("favorite_count")
-    public void setFavorite_count(Integer favorite_count) {
+    public void setFavorite_count(Long favorite_count) {
         this.favorite_count = favorite_count;
     }
 
-    public RetweetedStatus withFavorite_count(Integer favorite_count) {
+    public RetweetedStatus withFavorite_count(Long favorite_count) {
         this.favorite_count = favorite_count;
         return this;
     }
@@ -348,16 +325,16 @@ public class RetweetedStatus {
     }
 
     @JsonProperty("retweet_count")
-    public Integer getRetweet_count() {
+    public Long getRetweet_count() {
         return retweet_count;
     }
 
     @JsonProperty("retweet_count")
-    public void setRetweet_count(Integer retweet_count) {
+    public void setRetweet_count(Long retweet_count) {
         this.retweet_count = retweet_count;
     }
 
-    public RetweetedStatus withRetweet_count(Integer retweet_count) {
+    public RetweetedStatus withRetweet_count(Long retweet_count) {
         this.retweet_count = retweet_count;
         return this;
     }

@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class UserMentions {
 
     @JsonProperty("id")
-    private Integer id;
+    private Long id;
     @JsonProperty("id_str")
     private String id_str;
     @JsonProperty("indices")
-    private List<Integer> indices = new ArrayList<Integer>();
+    private List<Long> indices = new ArrayList<Long>();
     @JsonProperty("name")
     private String name;
     @JsonProperty("screen_name")
@@ -34,16 +34,16 @@ public class UserMentions {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public UserMentions withId(Integer id) {
+    public UserMentions withId(Long id) {
         this.id = id;
         return this;
     }
@@ -64,16 +64,16 @@ public class UserMentions {
     }
 
     @JsonProperty("indices")
-    public List<Integer> getIndices() {
+    public List<Long> getIndices() {
         return indices;
     }
 
     @JsonProperty("indices")
-    public void setIndices(List<Integer> indices) {
+    public void setIndices(List<Long> indices) {
         this.indices = indices;
     }
 
-    public UserMentions withIndices(List<Integer> indices) {
+    public UserMentions withIndices(List<Long> indices) {
         this.indices = indices;
         return this;
     }

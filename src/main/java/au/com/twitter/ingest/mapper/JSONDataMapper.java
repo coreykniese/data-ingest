@@ -37,7 +37,7 @@ public class JSONDataMapper<T> {
         try {
             result = mapper.readValue(response, typeClass);
         } catch (Exception e) {
-            LOGGER.error("Error Mapping SDS response to JSON: " + response, e);
+            LOGGER.error("Error Mapping data to JSON: " + response, e);
         }
 
         return result;

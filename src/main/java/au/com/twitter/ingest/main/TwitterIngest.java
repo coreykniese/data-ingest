@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import au.com.twitter.ingest.configuration.EndpointConfiguration;
 import au.com.twitter.ingest.configuration.OAuthConfiguration;
+import au.com.twitter.ingest.processor.IngestProcessor;
 
 import com.google.common.collect.Lists;
 import com.twitter.hbc.ClientBuilder;
@@ -30,17 +31,20 @@ public class TwitterIngest {
     final BlockingQueue<String> msgQueue;
     final BlockingQueue<Event> eventQueue;
     
+    final IngestProcessor ingestProcessor;
+    
     Hosts hosebirdHosts;
     StreamingEndpoint hosebirdEndpoint;
     Authentication hosebirdAuth;
     Client hosebirdClient;
     
-    public TwitterIngest(final EndpointConfiguration endpointConfiguration, final OAuthConfiguration oAuthConfiguration) {
+    public TwitterIngest(final EndpointConfiguration endpointConfiguration, final OAuthConfiguration oAuthConfiguration, final IngestProcessor ingestProcessor) {
         msgQueue = new LinkedBlockingQueue<String>(endpointConfiguration.getMsgQueueSize());
         eventQueue = new LinkedBlockingQueue<Event>(endpointConfiguration.getEventQueueSize());
         
         initEndpoint(oAuthConfiguration);
         createClient();
+        this.ingestProcessor = ingestProcessor;
     }
     
     
@@ -78,6 +82,7 @@ public class TwitterIngest {
             try {
                 String msg = msgQueue.take();
                 LOGGER.info(msg);
+                ingestProcessor.process(msg);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
