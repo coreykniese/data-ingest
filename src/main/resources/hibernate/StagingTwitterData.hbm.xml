@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="au.com.twitter.ingest.dto">
+<hibernate-mapping package="au.com.twitter.ingest.model">
 
     <class name="TwitterIngestDTO" table="STG_TWITTER_MSG">
         <id name="id" column="EVENT_ID">
