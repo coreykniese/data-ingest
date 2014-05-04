@@ -8,6 +8,7 @@ public class TwitterIngestDAOImpl extends GenericHibernateDAO<TwitterIngestMessa
         super(TwitterIngestMessage.class);
     }
 
+    @Override
     public void saveTwitterIngestMessage(final TwitterIngestMessage twitterIngestMessage) {
         saveOrUpdate(twitterIngestMessage);
     }

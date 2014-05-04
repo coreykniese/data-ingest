@@ -30,6 +30,7 @@ public class BasePrimaryKey implements Serializable, Comparable<BasePrimaryKey> 
     /* (non-Javadoc)
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public int compareTo(BasePrimaryKey obj) {
         return ComparableComparator.INSTANCE.compare(this, obj);

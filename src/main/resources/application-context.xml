@@ -14,10 +14,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
         
-    <bean name="twitterIngest" class="au.com.twitter.ingest.main.TwitterIngest">
+    <bean name="twitterIngest" class="au.com.twitter.ingest.main.TwitterIngestRunner">
         <constructor-arg ref="endpointConfiguration" />
         <constructor-arg ref="oAuthConfiguration" />
-        <constructor-arg ref="ingestProcessor" />
+        <constructor-arg ref="ingestSink" />
     </bean>  
     
     <bean name="oAuthConfiguration" class="au.com.twitter.ingest.configuration.OAuthConfiguration">
@@ -32,7 +32,7 @@
         <constructor-arg value="${endpoint.config.event.queue.size}" />
     </bean>
 
-    <bean name="ingestProcessor" class="au.com.twitter.ingest.processor.IngestProcessor">
+    <bean name="ingestSink" class="au.com.twitter.ingest.sink.TwitterIngestSink">
         <constructor-arg ref="twitterIngestService" />
     </bean>        
         

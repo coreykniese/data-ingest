@@ -13,6 +13,7 @@ public class GenericHibernateDAO<T extends BaseDataEntity, PK extends Serializab
     private static final Logger LOGGER = Logger.getLogger(GenericHibernateDAO.class);
 
     protected SessionFactory sessionFactory;
+    @SuppressWarnings("unused")
     private Class<T> persistentClass;
 
     public GenericHibernateDAO(final Class<T> type) {
@@ -22,6 +23,7 @@ public class GenericHibernateDAO<T extends BaseDataEntity, PK extends Serializab
         this.persistentClass = type;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public PK saveOrUpdate(final T entity) {
         long startTime = System.currentTimeMillis();

@@ -14,6 +14,7 @@ public class TwitterIngestServiceImpl implements TwitterIngestService {
         this.twitterIngestDAO = twitterIngestDAO;
     }
 
+    @Override
     @Transactional
     public void writeTwitterIngestMessage(String rawContent) {
         TwitterIngestMessage twitterIngestMessage = new TwitterIngestMessage();

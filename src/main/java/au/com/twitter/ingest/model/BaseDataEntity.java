@@ -57,6 +57,7 @@ public class BaseDataEntity<PK extends Serializable> implements Serializable, Co
     /* (non-Javadoc)
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
+    @Override
     public int compareTo(BaseDataEntity<PK> other) {
         if (other == null || !(this.getClass().isAssignableFrom(other.getClass()))) {
             return 1;
