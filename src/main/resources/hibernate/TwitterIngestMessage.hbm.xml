@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="au.com.twitter.ingest.model">
+
+    <class name="TwitterIngestMessage" table="STG_TWITTER_MSG">
+        <id name="primaryKey" column="ID" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+        <property name="twitterId" type="java.lang.Long" column="TWITTER_ID"/>
+        <property name="twitterMsg" type="text" column="TWITTER_MSG"/>
+        <property name="status" type="java.lang.String" column="STATUS"/>
+        
+        <property name="created" type="java.util.Date" column="CREATED"/>
+        <property name="modified" type="java.util.Date" column="MODIFIED"/>
+        
+    </class>
+
+</hibernate-mapping>

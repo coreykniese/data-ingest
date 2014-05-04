@@ -2,12 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
         
@@ -29,7 +32,9 @@
         <constructor-arg value="${endpoint.config.event.queue.size}" />
     </bean>
 
-    <bean name="ingestProcessor" class="au.com.twitter.ingest.processor.IngestProcessor"></bean>        
+    <bean name="ingestProcessor" class="au.com.twitter.ingest.processor.IngestProcessor">
+        <constructor-arg ref="twitterIngestService" />
+    </bean>        
         
         
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -39,6 +44,19 @@
             </list>
         </property>
         <property name="ignoreResourceNotFound" value="false"/>
+    </bean>
+        
+    <bean name="twitterIngestService" class="au.com.twitter.ingest.service.TwitterIngestServiceImpl">
+        <constructor-arg ref="twitterIngestDAO" />
+    </bean>
+    
+    <bean id="genericHibernateDAO"
+          abstract="true"
+          class="au.com.twitter.ingest.dao.GenericHibernateDAO">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+        
+    <bean name="twitterIngestDAO" class="au.com.twitter.ingest.dao.TwitterIngestDAOImpl" parent="genericHibernateDAO">
     </bean>
         
 </beans>
