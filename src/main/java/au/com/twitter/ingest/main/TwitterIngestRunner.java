@@ -22,7 +22,7 @@ import com.twitter.hbc.httpclient.auth.Authentication;
 import com.twitter.hbc.httpclient.auth.OAuth1;
 
 
-public class TwitterIngestRunner {
+public class TwitterIngestRunner implements Runnable {
 
     private static final Logger LOGGER = Logger.getLogger(TwitterIngestRunner.class);
     
@@ -72,17 +72,24 @@ public class TwitterIngestRunner {
     }
     
     public void listen() {
-        while (!hosebirdClient.isDone()) {
-            try {
-                String msg = msgQueue.take();
-                LOGGER.info(msg);
-                ingestSink.process(msg);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            
-          }
+        
+    }
+
+
+    @Override
+    public void run() {
+//        // TODO Auto-generated method stub
+//        while (!hosebirdClient.isDone()) {
+//            try {
+//                String msg = msgQueue.take();
+//                LOGGER.info(msg);
+//                ingestSink.process(msg);
+//            } catch (InterruptedException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//            
+//          }
     }
     
     

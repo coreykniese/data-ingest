@@ -7,13 +7,13 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import au.com.afl.test.AbstractBaseContextTest;
-import au.com.twitter.ingest.main.TwitterIngestRunner;
+import au.com.twitter.ingest.sink.TwitterIngestSink;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestTwitterIngest extends AbstractBaseContextTest {
 
-    public TwitterIngestRunner twitterIngest;
+    public TwitterIngestSink twitterIngest;
     
     public TestTwitterIngest() {
         // TODO Auto-generated constructor stub
@@ -21,7 +21,7 @@ public class TestTwitterIngest extends AbstractBaseContextTest {
 
     @Before
     public void setUp() {
-        twitterIngest = (TwitterIngestRunner) applicationContext.getBean("twitterIngest");
+        twitterIngest = (TwitterIngestSink) applicationContext.getBean("ingestSink");
     }
     
     
@@ -33,6 +33,6 @@ public class TestTwitterIngest extends AbstractBaseContextTest {
     
     @Test
     public void test_listen() {
-        twitterIngest.listen();
+        twitterIngest.init();
     }
 }

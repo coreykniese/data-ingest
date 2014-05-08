@@ -14,28 +14,46 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
         
-    <bean name="twitterIngest" class="au.com.twitter.ingest.main.TwitterIngestRunner">
-        <constructor-arg ref="endpointConfiguration" />
-        <constructor-arg ref="oAuthConfiguration" />
-        <constructor-arg ref="ingestSink" />
-    </bean>  
-    
-    <bean name="oAuthConfiguration" class="au.com.twitter.ingest.configuration.OAuthConfiguration">
+    <bean name="ingestSink" class="au.com.twitter.ingest.sink.TwitterIngestSink">
+        <constructor-arg ref="twitterClientBuilder" />
+        <constructor-arg ref="twitterIngestService" />
+        <constructor-arg ref="msgQueue" />
+        <constructor-arg ref="eventQueue" />
+    </bean>        
+        
+     <bean name="msgQueue" class="java.util.concurrent.LinkedBlockingQueue">
+        <constructor-arg  value="${endpoint.config.msg.queue.size}" />
+     </bean>
+     
+     <bean name="eventQueue" class="java.util.concurrent.LinkedBlockingQueue">
+        <constructor-arg  value="${endpoint.config.event.queue.size}" />
+     </bean>   
+       
+    <bean name="hosebirdEndpoint" class="com.twitter.hbc.core.endpoint.StatusesFilterEndpoint" />   
+     
+    <bean name="hosebirdAuth" class="com.twitter.hbc.httpclient.auth.OAuth1">
         <constructor-arg value="${security.oauth.consumer.key}" />
         <constructor-arg value="${security.oauth.consumer.secret}" />
         <constructor-arg value="${security.oauth.token}" />
         <constructor-arg value="${security.oauth.secret}" />
-    </bean>        
-    
-    <bean name="endpointConfiguration" class="au.com.twitter.ingest.configuration.EndpointConfiguration">
-        <constructor-arg value="${endpoint.config.msg.queue.size}" />
-        <constructor-arg value="${endpoint.config.event.queue.size}" />
     </bean>
-
-    <bean name="ingestSink" class="au.com.twitter.ingest.sink.TwitterIngestSink">
-        <constructor-arg ref="twitterIngestService" />
-    </bean>        
-        
+     
+     <bean name="twitterClientBuilder" class="au.com.twitter.ingest.model.TwitterClientBuilder">
+        <property name="name" value="TwitterAFLIngest" />
+        <property name="hosts" ref="httpHosts" />
+        <property name="authentication" ref="hosebirdAuth" />
+        <property name="endpoint" ref="hosebirdEndpoint" />
+        <property name="processor" ref="processor" />
+        <property name="eventMessageQueue" ref="eventQueue" />
+     </bean>
+     
+    <bean name="httpHosts" class="com.twitter.hbc.core.HttpHosts">
+        <constructor-arg value="https://stream.twitter.com" />
+    </bean>    
+    
+    <bean name="processor" class="com.twitter.hbc.core.processor.StringDelimitedProcessor">
+        <constructor-arg ref="msgQueue" />
+    </bean>
         
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">

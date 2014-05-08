@@ -1,34 +1,49 @@
 package au.com.twitter.ingest.sink;
 
+import java.util.concurrent.BlockingQueue;
+
 import org.apache.log4j.Logger;
+
+import com.twitter.hbc.ClientBuilder;
+import com.twitter.hbc.core.Client;
+import com.twitter.hbc.core.event.Event;
 
 import au.com.twitter.ingest.domain.TweetData;
 import au.com.twitter.ingest.mapper.JSONDataMapper;
 import au.com.twitter.ingest.service.TwitterIngestService;
 
-
 public class TwitterIngestSink {
 
     private static final Logger LOGGER = Logger.getLogger(TwitterIngestSink.class);
-    
-    JSONDataMapper<TweetData> mapper = new JSONDataMapper<TweetData>(TweetData.class);
-    
-    TwitterIngestService service;
-    
-    public TwitterIngestSink(TwitterIngestService service) {
+
+    private Client hosebirdClient;
+    private TwitterIngestService service;
+    private BlockingQueue<String> msgQueue;
+    private BlockingQueue<Event> eventQueue;
+
+    public TwitterIngestSink(ClientBuilder clientBuilder, TwitterIngestService service, BlockingQueue<String> msgQueue,
+            BlockingQueue<Event> eventQueue) {
         this.service = service;
+        this.msgQueue = msgQueue;
+        this.eventQueue = eventQueue;
+        this.hosebirdClient = clientBuilder.build();
     }
 
-    public void process(final String data) {
-        this.service.writeTwitterIngestMessage(data);
-    }
-    
-    protected void write(TweetData tweet) {
-        LOGGER.info(tweet);
+    public void init() {
+        this.hosebirdClient.connect();
     }
 
-    protected TweetData mapData(final String data) {
-        return mapper.mapResponse(data);
+    public void process() {
+        while (!hosebirdClient.isDone()) {
+            try {
+                String msg = msgQueue.take();
+                LOGGER.info(msg);
+                this.service.writeTwitterIngestMessage(msg);        
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
     }
-    
 }
